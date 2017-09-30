@@ -63,3 +63,37 @@ You can create a model into your Database using the Interactive Shell
 (Interactive Shell)> from <app-name> import *
 (Interactive Shell)> <variable> = <app-name>.objects.create({Params}...)
 
+
+## Docker Fundamentals 
+=================
+
+
+Docker Images are build based on a file content, filled with instructions to tell docker what to download
+what to install and how to install.
+
+Using [Docker Repos](https://hub.docker.com) to store and download official images
+
+Docker Commands
+---------
+
+```
+#> docker --version             -> Get version of your docker
+#> docker pull <image-name>     -> Download an image from docker hub   
+#> docker run <PARAMS>
+#> docker ps                    -> Get the list of your active processes (CONTAINER ID, IMAGE, COMMAND, CREATED, STATUS, PORTS, NAMES)
+#> docker exec <PARAMS> <image-name> <command>      -> Gets into the Container and executes a command
+#> docker rmi <image-id>        -> Deletes an image
+#> docker build -t <image-name>:<image-tag> <Dockerfile-path>
+
+```
+
+Dockerfile
+--------
+
+This file contains the instructions to build the base image
+
+```
+FROM <image-name>:<image-tag>    -> FROM indicates the base image and the tag used by docker, downloaded from the repo
+
+```
+
