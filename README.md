@@ -73,7 +73,7 @@ what to install and how to install.
 
 Using [Docker Repos](https://hub.docker.com) to store and download official images
 
-Docker Commands
+### Docker Commands
 ---------
 
 ```
@@ -87,7 +87,7 @@ Docker Commands
 
 ```
 
-Dockerfile
+### Dockerfile
 --------
 
 This file contains the instructions to build the base image
@@ -97,3 +97,47 @@ FROM <image-name>:<image-tag>    -> FROM indicates the base image and the tag us
 
 ```
 
+Then we define each of the steps to Build the image like the follow:
+```
+FROM python:3.6         # Here we specify the image that we will use
+WORKDIR /djangoApp      # Here we set a folder to set the image on
+COPY djangoApp/damnificados/ /djangoApp     # Here we tell docker where the file are and where to place them
+
+RUN pip install django          # In here we start specifying the dependencies that our image needs to be able to run
+RUN pip install mysqlclient
+RUN pip install gunicorn
+
+CMD gunicorn --bind 0.0.0.0:8000 damnificados.wsgi:application  # Here we explain the command to RUN the actual service that we need, in this case gunicorn
+```
+
+Each step is handled as a a _layer_ and that's because if you make any change to it, docker can do only the new steps and do not download everything else.
+This help us to avoid the download of an whole image each time we add a new step
+
+We can link images that will comunicate eachother, for this we use an extra parameter called *--link <service-name>* and we send the service name
+that is related to.
+
+### Docker Compose
+-------
+
+Since we will use microservices in the near future, we will face a lot of problems to link all of them. To avoid that problem we can use *Docker Compose*.
+This tool will help us to create a _Group/Package_ and run all the images linked within the same network, so we do not need to link by hand all the different images.
+
+The syntax is the following:
+
+*docker-compose.yml*
+```
+version: '2' #This is the latest version
+
+services:
+  <container-name>: # The first container name that you'll run
+    image: <image-name>  # You can use an image directly from hub.docker
+    ports:
+      - "<port_to:bind>"  # In case you need to bind ports
+    depends_on:     # In case your image depends on someone else
+      - <container-name>  
+
+  <container-name>:
+    build: <path-to-Dockerfile>   # You can also build an local image inside your network
+    environment:            # You can set environment variables if needed
+      - <environment-variable>   
+```
