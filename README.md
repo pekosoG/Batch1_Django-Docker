@@ -76,7 +76,7 @@ This help us to freeze the dependencies version for PIP to download. This is via
 project folder
 
 ```
-<dependency>[=<version>]
+<dependency>[==<version>]
 ```
 
 Also we need to verify to run first the pip install to avoid installing eveything each time we create/run the container
