@@ -50,19 +50,24 @@ wsgi.py
 - Create you model into the app/models.py file
 - Append your model into settings.py into INSTALLED_APPS object/array
 - Once we have the model, run:
+
 ```
 (Environment)> py manage.py makemigrations
 ```
+
 - Once we have the migrations files, we can run it:
+
 ```
 (Environment)> py manage.py migrate   
 ```
+
 You can create a model into your Database using the Interactive Shell
+
 ```
 (Environment)> py manage.py shell
 (Interactive Shell)> from <app-name> import *
 (Interactive Shell)> <variable> = <app-name>.objects.create({Params}...)
-
+```
 
 ## Docker Fundamentals 
 =================
@@ -125,6 +130,7 @@ This tool will help us to create a _Group/Package_ and run all the images linked
 The syntax is the following:
 
 *docker-compose.yml*
+
 ```
 version: '2' #This is the latest version
 
