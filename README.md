@@ -1,6 +1,6 @@
 # Virtual Environment + DJango Lesson
 ## [Dev.f GDL](https://www.devf.mx/guadalajara) - Cinta Negra - Batch 1
-=================
+-----------------
 
 **Installation:**
 -----------------
@@ -69,8 +69,35 @@ You can create a model into your Database using the Interactive Shell
 (Interactive Shell)> <variable> = <app-name>.objects.create({Params}...)
 ```
 
+## Requirements PIP
+----------
+
+This help us to freeze the dependencies version for PIP to download. This is viable using requirements.txt inside the 
+project folder
+
+```
+<dependency>[=<version>]
+```
+
+Also we need to verify to run first the pip install to avoid installing eveything each time we create/run the container
+(git diff Dockerfile):
+```
+FROM python:3.6
++COPY djangoApp/damnificados/requirements.txt /djangoApp/requirements.txt
++RUN pip install -r requirements.txt
+ WORKDIR /djangoApp
+ COPY djangoApp/damnificados/ /djangoApp
+-
+-RUN pip install django
+-RUN pip install mysqlclient
+-RUN pip install gunicorn
+-
+ CMD gunicorn --bind 0.0.0.0:8000 damnificados.wsgi:application
+
+```
+
 ## Docker Fundamentals 
-=================
+----------
 
 
 Docker Images are build based on a file content, filled with instructions to tell docker what to download
