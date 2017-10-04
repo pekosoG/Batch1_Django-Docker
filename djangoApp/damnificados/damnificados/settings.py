@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'personas',
     'rest_framework',
-    'lugares'
+    'lugares',
+    'personas_lugares'
 ]
 
 MIDDLEWARE = [
