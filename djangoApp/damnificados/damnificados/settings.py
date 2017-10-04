@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'damnificados.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'damnificados',
         'USER':'root',
         'PASSWORD':'root',
-        'HOST':'mysql-docker',
-        'PORT':'3306'
+        'HOST':'postgres-docker',
+        'PORT':'5432'
     }
     #'default': {
     #    'ENGINE': 'django.db.backends.sqlite3',

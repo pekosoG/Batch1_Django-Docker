@@ -7,9 +7,9 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - mysql-docker
+      - postgres-docker
 
-  mysql-docker:
-    image: mysql
+  postgres-docker:
+    image: postgres
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - POSTGRES_PASSWORD=root

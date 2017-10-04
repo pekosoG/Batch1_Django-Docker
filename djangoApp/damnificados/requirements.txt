@@ -1,4 +1,4 @@
 django
-mysqlclient
+psycopg2
 gunicorn
 djangorestframework==3.6.4
