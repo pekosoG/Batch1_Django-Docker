@@ -11,13 +11,16 @@ def valida_edad(source):
         raise serializers.ValidationError("Ay ajaaaaaaa, no seas mamoln!")
 
 class PersonasGetName(serializers.Serializer):
-    nombresito = serializers.CharField(max_length = 180)
+    nombre = serializers.CharField(max_length = 180)
 
 class PersonasCreateSerializer(serializers.Serializer) :
     nombre = serializers.CharField(max_length = 180)
     edad = serializers.IntegerField(validators=[valida_edad])
     sexo = serializers.CharField(max_length = 5)
     tipo_de_personas = serializers.CharField(max_length=50)
+    
+    def create(self, validated_data):
+        return Personas.objects.create(**validated_data)
 
 class PersonasModifySerializer(serializers.Serializer):
     tipo_de_personas = serializers.CharField(max_length=50)
