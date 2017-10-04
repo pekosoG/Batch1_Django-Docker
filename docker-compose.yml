@@ -2,7 +2,8 @@ version: '2'
 
 services:
   django-service:
-    image: django-devf
+    build: ./
+    #image: django-devf
     ports:
       - "8000:8000"
     depends_on:
