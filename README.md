@@ -69,6 +69,11 @@ You can create a model into your Database using the Interactive Shell
 (Interactive Shell)> <variable> = <app-name>.objects.create({Params}...)
 ```
 
+## Django DataBase Settings
+---------
+
+## Django 
+
 ## Requirements PIP
 ----------
 

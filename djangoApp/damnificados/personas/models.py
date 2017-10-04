@@ -12,4 +12,3 @@ class Personas(models.Model) :
     edad = models.IntegerField(max_length = 3)
     sexo = models.CharField(choices= SEXOS, max_length = 5)
     tipo_de_personas = models.CharField(choices= TIPOS_PERSONAS, max_length=50)
-    #shalala=modesl.CharField(max_length=10)
