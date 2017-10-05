@@ -177,3 +177,5 @@ $RECYCLE.BIN/
 [Ll]ocal
 [Ss]cripts
 pyvenv.cfg
+
+*.tcl
