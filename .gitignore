@@ -179,3 +179,4 @@ $RECYCLE.BIN/
 pyvenv.cfg
 
 *.tcl
+clasedjango/tcl/
