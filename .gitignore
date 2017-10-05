@@ -169,3 +169,11 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# MultiPlatform extra ignores
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
