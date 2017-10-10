@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/v1/personas',include('personas.urls')),
     url(r'^api/v1/lugares',include('lugares.urls')),
-    url(r'^api/v1/articulo',include('articulo.urls'))
+    url(r'^api/v1/articulos',include('articulo.urls'))
 ]

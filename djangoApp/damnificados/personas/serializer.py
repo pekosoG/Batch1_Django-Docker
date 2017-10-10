@@ -13,6 +13,11 @@ def valida_edad(source):
 class PersonasGetName(serializers.Serializer):
     nombre = serializers.CharField(max_length = 180)
 
+class PersonasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Personas
+        fields = ['nombre','edad','sexo','tipo_de_personas']
+
 class PersonasCreateSerializer(serializers.Serializer) :
     nombre = serializers.CharField(max_length = 180)
     edad = serializers.IntegerField(validators=[valida_edad])

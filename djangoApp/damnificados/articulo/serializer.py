@@ -9,3 +9,8 @@ class ArticuloCreateSerializer(serializers.Serializer) :
     
     def create(self, validated_data):
         return Articulo.objects.create(**validated_data)
+
+class AtriculosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Personas
+        fields = ['nombre']

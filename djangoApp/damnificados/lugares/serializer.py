@@ -18,3 +18,8 @@ class LugaresModifySerializer(serializers.Serializer):
     calle = serializers.CharField(max_length = 50)
     colonia = serializers.CharField(max_length = 50)
     codigo_postal = serializers.IntegerField()
+
+class LugaresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lugares
+        fields = ['nombre','calle','colonia','codigo_postal']

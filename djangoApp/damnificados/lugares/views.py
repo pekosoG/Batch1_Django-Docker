@@ -8,19 +8,19 @@ from rest_framework.response import Response
 from django.shortcuts import render
 
 from .models import Lugares
-from .serializer import LugaresGetName,LugaresCreateSerializer
+from .serializer import LugaresGetName,LugaresCreateSerializer,LugaresSerializer
 
 # Create your views here.
 
 class LugaresApi(APIView):
 
     def get(self, request):
-        gente = Lugares.objects.all()
-        serializer = LugaresGetName(gente, many=True)
+        lugar = Lugares.objects.all()
+        serializer = LugaresSerializer(lugar, many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
 
     def post(self, request):
-        lugar=LugaresCreateSerializer(data=request.data)
+        lugar=LugaresSerializer(data=request.data)
         if lugar.is_valid():
             lugar.save()
             return Response(lugar.data,status=status.HTTP_201_CREATED)
