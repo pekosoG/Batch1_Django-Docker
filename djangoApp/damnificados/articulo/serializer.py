@@ -12,5 +12,5 @@ class ArticuloCreateSerializer(serializers.Serializer) :
 
 class AtriculosSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Personas
+        model = Articulo
         fields = ['nombre']
