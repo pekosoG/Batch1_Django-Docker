@@ -1,8 +1,5 @@
 from rest_framework import serializers
-from .models import Personas
-
-SEXOS =  (('M','Mujer'),('H','Hombre'),('I','Indefinido'))
-TIPOS_PERSONAS= (('D','Damnificado'),('Voluntario','Voluntario'),('Otro','Otro'))
+from .models import Personas, PersonasHasLugares,Lugares
 
 def valida_edad(source):
     if source<= 100:
@@ -16,7 +13,7 @@ class PersonasGetName(serializers.Serializer):
 class PersonasSerializer(serializers.ModelSerializer):
     class Meta:
         model = Personas
-        fields = ['nombre','edad','sexo','tipo_de_personas']
+        fields = ['id','nombre','edad','sexo','tipo_de_personas']
 
 class PersonasCreateSerializer(serializers.Serializer) :
     nombre = serializers.CharField(max_length = 180)
@@ -29,3 +26,18 @@ class PersonasCreateSerializer(serializers.Serializer) :
 
 class PersonasModifySerializer(serializers.Serializer):
     tipo_de_personas = serializers.CharField(max_length=50)
+
+
+class PersonasHasLugaresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonasHasLugares
+        fields = ['fecha','status','persona_id','lugar_id']
+
+class PersonasHasLugaresCreate(serializers.Serializer):
+    fecha = serializers.DateField()
+    status = serializers.CharField(max_length=2)
+    #persona_id = serializers.ForeignKey(Personas)
+    #lugar_id = serializers.ForeignKey(Lugares)
+
+    def create(self, validated_data):
+        return PersonasHasLugares.objects.create(**validated_data)
