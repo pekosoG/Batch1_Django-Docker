@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'personas',
     'rest_framework',
     'lugares',
-    'articulo'
+    'articulo',
+    'user'
 ]
 
 MIDDLEWARE = [

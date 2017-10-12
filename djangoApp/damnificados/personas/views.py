@@ -9,8 +9,8 @@ from django.shortcuts import render
 
 from .models import Personas,PersonasHasLugares
 from .serializer import PersonasGetName,PersonasCreateSerializer,PersonasSerializer,PersonasHasLugaresSerializer
-
 import requests
+import json
 
 # Create your views here.
 
@@ -25,19 +25,17 @@ class PersonasApi(APIView):
         bato=PersonasSerializer(data=request.data)
         if bato.is_valid():
             bato.save()
-            self._sendPush('asdasdasd','')
+            self._sendPush('Sadot, vas a tener un hijo!','caEFQW5rjr8:APA91bGzRJmDNTc8U1MdTWARodHlcvAK9nv2KuTazSroy40NIPDB9am928q6onR3-xVlYLlYkhvIga-9KIS0cS7hS7OLmZwWrU5xmTciwJt3UWFaYhI_zUayJ3llPAeT7GYjx834yV8w')
             return Response(bato.data,status=status.HTTP_201_CREATED)
         else:
             return Response(bato.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def _sendPush(self,message, devicetoken):
-        baseUrl = 'https://fcm.googleapis.com/fcm/send'
-        header = {'Autorization':'key=AIzaSyB0k006LxEMxjpcL1bgz6CkAtEhX2UjQdY','Content-Type':'application/json'}
-        body = { 'notification': { 'title': 'Dev-F!!!!!!!', 'body': 'SADOT! UNO NUEVO! ', 'icon': 'firebase-logo.png', 'click_action': 'https://haydetodo-test.firebaseapp.com/'}, 'to':'eV6hrH5oXgg:APA91bHb2GX6GYbj-VmtjtdvKlrsYur_emeJL9B6G0MJ8VSqUkY2F4p6CK58tg7S28XRc_NEaRoBGJ9uid1xGu43XHVs7-ySEBnbppaX0vJ0_ZU6W4jT_MtuVlxbtA3VVWGNBarM2yaj'}
-
-        print('YEEEEEEEAAAAHHH')
-        resp = requests.post(baseUrl,data=body,headers=header)  
-        print('sdasdasd',resp)
+        baseUrl = "https://fcm.googleapis.com/fcm/send"
+        headers = {'Authorization':'key=AIzaSyB0k006LxEMxjpcL1bgz6CkAtEhX2UjQdY', 'Content-Type':'application/json'}
+        data = {'notification': {'title': message,'body': 'Ya constesta los whatsapp!','icon': 'firebase-logo.png','click_action': 'http://localhost:8081'},'to': devicetoken}
+        data = json.dumps(data)
+        pushNotification = requests.post(baseUrl, headers=headers, data=data)
     
 class PersonaApi(APIView):
     def _getPersona(self, pk):
