@@ -3,3 +3,4 @@ mysqlclient
 gunicorn
 djangorestframework==3.6.4
 requests
+djangorestframework-jwt
