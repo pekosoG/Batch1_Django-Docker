@@ -6,7 +6,7 @@ from .views import PersonasApi,PersonasHasLugaresApi,PersonaApi
 #       Authorization: Auth <token>
 #
 urlpatterns=[
-    url(r'^$',PersonasApi.as_view()),
-    url(r'(?P<pk>[0-9]+)/$',PersonaApi.as_view()),
+    url(r'^$',PersonasApi.as_view(), name="personas_endpoint"),
+    url(r'(?P<pk>[0-9]+)/$',PersonaApi.as_view(), name="personas_endpoint"),
     url(r'^/hasPersonas$',PersonasHasLugaresApi.as_view())
 ]
