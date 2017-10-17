@@ -3,6 +3,4 @@ WORKDIR /djangoApp
 COPY djangoApp/damnificados/requirements.txt /djangoApp/requirements.txt
 RUN pip install -r requirements.txt
 COPY djangoApp/damnificados/ /djangoApp
-CMD python manage.py makemigrations
-CMD python manage.py migrate
-CMD gunicorn --bind 0.0.0.0:8000 damnificados.wsgi:application
+CMD sh init.sh

@@ -1,6 +1,12 @@
 version: '2'
 
 services:
+  mysql-docker:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=damnificados
+
   django-service:
     build: .
     #image: django-devf
@@ -9,7 +15,4 @@ services:
     depends_on:
       - mysql-docker
 
-  mysql-docker:
-    image: mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
+  
