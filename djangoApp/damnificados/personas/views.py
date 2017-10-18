@@ -25,7 +25,7 @@ class PersonasApi(APIView):
         bato=PersonasSerializer(data=request.data)
         if bato.is_valid():
             bato.save()
-            self._sendPush('Sadot, vas a tener un hijo!','caEFQW5rjr8:APA91bGzRJmDNTc8U1MdTWARodHlcvAK9nv2KuTazSroy40NIPDB9am928q6onR3-xVlYLlYkhvIga-9KIS0cS7hS7OLmZwWrU5xmTciwJt3UWFaYhI_zUayJ3llPAeT7GYjx834yV8w')
+            self._sendPush('Sadot paga los tacos!!','caEFQW5rjr8:APA91bGzRJmDNTc8U1MdTWARodHlcvAK9nv2KuTazSroy40NIPDB9am928q6onR3-xVlYLlYkhvIga-9KIS0cS7hS7OLmZwWrU5xmTciwJt3UWFaYhI_zUayJ3llPAeT7GYjx834yV8w')
             return Response(bato.data,status=status.HTTP_201_CREATED)
         else:
             return Response(bato.errors, status=status.HTTP_400_BAD_REQUEST)

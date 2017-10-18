@@ -49,3 +49,16 @@ class PersonasTest(TestCase):
             data=json.dumps(self.correct_person),
             content_type='application/json')
         self.assertEqual(response.status_code,201)
+
+    def testDeletePersona(self):
+        response = self.client.delete(reverse('personas_endpoint',kwargs={'pk':self.secondPerson.id}))
+        self.assertEqual(response.status_code,204)
+    
+    def testPutPersona(self):
+        response = self.client.put(
+            reverse('personas_endpoint',
+            kwargs={'pk':self.firstPerson.id}),
+            data=json.dumps(self.correct_person),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code,202)
