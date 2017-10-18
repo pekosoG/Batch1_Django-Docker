@@ -1,4 +1,3 @@
-#!/bin/bash
 python manage.py makemigrations
 python manage.py migrate personas zero
 python manage.py migrate lugares zero
